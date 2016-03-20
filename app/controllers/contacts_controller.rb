@@ -7,11 +7,15 @@ class ContactsController < ApplicationController
   end
 
   def create
+    coordinates = Geocoder.coordinates(params[:address])
+
     Contact.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
       email: params[:email],
-      phone_number: params[:phone_number]
+      phone_number: params[:phone_number],
+      latitude: coordinates[0],
+      longitude: coordinates[1]
     )
   end
 
