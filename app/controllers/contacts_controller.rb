@@ -7,7 +7,11 @@ class ContactsController < ApplicationController
   end
 
   def create
-    coordinates = Geocoder.coordinates(params[:address])
+    address = params[:address]
+    if address == ""
+      address = "2413 S Western Ave, Chicago, IL, 60608"
+    end
+    coordinates = Geocoder.coordinates(address)
 
     Contact.create(
       first_name: params[:first_name],
@@ -15,7 +19,8 @@ class ContactsController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number],
       latitude: coordinates[0],
-      longitude: coordinates[1]
+      longitude: coordinates[1],
+      user_id: current_user.id
     )
   end
 
