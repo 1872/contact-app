@@ -1,4 +1,10 @@
 <h2><%= @contact.first_name %> <%= @contact.last_name %></h2>
+<p>Group(s):</p>
+<ul>
+  <% @contact.groups.each do |group| %>
+    <li><%= group.name %></li>
+  <% end %>
+</ul>
 <p><%= @contact.email %></p>
 <p><%= @contact.phone_number %></p>
 <div>
