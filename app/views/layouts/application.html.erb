@@ -13,6 +13,12 @@
 <% else %>
   <%= link_to "Sign out", "/users/sign_out", method: :delete %>
 <% end %>
+<h4>Groups</h4>
+<ul>
+  <li><a href="/contacts?group=Friends">Friends</a></li>
+  <li><a href="/contacts?group=Work">Work</a></li>
+  <li><a href="/contacts?group=Enemies">Enemies</a></li>
+</ul>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>

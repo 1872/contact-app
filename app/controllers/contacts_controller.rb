@@ -3,6 +3,12 @@ class ContactsController < ApplicationController
     # @contacts = Contact.all
     if current_user
       @contacts = current_user.contacts
+      if params[:group]
+        @contacts = Group.find_by(name: params[:group])
+                         .contacts
+                         .where(user_id: current_user.id)
+
+      end
     else
       redirect_to "/users/sign_in"
     end
